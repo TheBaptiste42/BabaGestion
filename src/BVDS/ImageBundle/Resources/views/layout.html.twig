@@ -1,0 +1,17 @@
+{# src/BVDS/ImageBundle/Ressources/views/layout.html.twig #}
+
+{% extends '::app_layout.html.twig' %}
+
+{% block app_menu_image %}class="active"{% endblock %}
+
+{% block menu_aux %}
+	<ul class="nav nav-pills nav-stacked">
+		<li role="navigation" {% block navaux_image_accueil %}{% endblock %}><a href="{{ path('bvds_image_homepage') }}">Accueil</a></li>
+{# 		<li role="navigation" {% block navaux_compta_listecompte %}{% endblock %}><a href="{{ path('bvds_compta_account_list') }}">Mes comptes</a></li>
+		<li role="navigation" {% block navaux_compta_listecomptes %}{% endblock %}><a href="{{ path('bvds_compta_account_list') }}">H</a></li> #}
+	</ul>
+{% endblock %}
+
+{% block page_title %}
+	Image
+{% endblock %}

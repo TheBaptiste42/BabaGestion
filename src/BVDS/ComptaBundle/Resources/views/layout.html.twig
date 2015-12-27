@@ -1,0 +1,17 @@
+{# src/BVDS/ComptaBundle/Ressources/views/layout.html.twig #}
+
+{% extends '::app_layout.html.twig' %}
+
+{% block app_menu_compta %}class="active"{% endblock %}
+
+{% block menu_aux %}
+	<ul class="nav nav-pills nav-stacked">
+		<li role="navigation" {% block navaux_compta_accueil %}{% endblock %}><a href="{{ path('bvds_compta_homepage') }}">Accueil</a></li>
+		<li role="navigation" {% block navaux_compta_listecompte %}{% endblock %}><a href="{{ path('bvds_compta_account_list') }}">Mes comptes</a></li>
+		<li role="navigation" {% block navaux_compta_listecomptes %}{% endblock %}><a href="{{ path('bvds_compta_account_list') }}">H</a></li>
+	</ul>
+{% endblock %}
+
+{% block page_title %}
+	Comptabilité
+{% endblock %}

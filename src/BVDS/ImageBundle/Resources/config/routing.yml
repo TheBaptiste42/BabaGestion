@@ -1,0 +1,19 @@
+bvds_image_homepage:
+    path:     /
+    defaults: { _controller: BVDSImageBundle:Main:index }
+
+bvds_image_albumview:
+    path:   /album/view/{id}
+    defaults: { _controller: BVDSImageBundle:Album:view }
+
+bvds_image_albumadd:
+    path:   /album/add/
+    defaults: { _controller: BVDSImageBundle:Album:add }
+
+bvds_image_albummod:
+    path:   /album/mod/{id}
+    defaults: { _controller: BVDSImageBundle:Album:mod }
+
+# bvds_image_albummod:
+#     path:   /album/mod/
+#     defaults: { _controller: BVDSImageBundle:Album:mod }

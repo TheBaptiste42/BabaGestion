@@ -1,0 +1,58 @@
+{# app/Resources/views/layout.html.twig #}
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>{% block page_title %}BabaGestion - Titre par Defaut{% endblock %}</title>
+		{% stylesheets '../app/Resources/public/css/bootstrap.min.css' '../app/Resources/public/css/app.css' filter='cssrewrite' %}
+  			<link rel="stylesheet" href="{{ asset_url }}" type="text/css" />
+		{% endstylesheets %}
+	</head>
+
+	<body>
+		<div class="navbar navbar-default navbar-fixed-top">
+  			<div class="container">
+    			<div class="navbar-header">
+      				<a class="navbar-brand" href="{{ path('app_homepage') }}">BabaGestion</a>
+   				</div>
+   				<ul class="nav navbar-nav">
+     				<li {% block app_menu_compta %}{% endblock %}><a href="{{ path('bvds_compta_homepage') }}">Comptabilité</a></li>
+            <li {% block app_menu_image %}{% endblock %}><a href="{{ path('bvds_image_homepage') }}">Image</a></li>
+    			</ul>
+
+    			<ul class="nav navbar-nav navbar-right">
+    				{% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+    					{#  #}
+    					<li class="dropdown"> 
+            				<a data-toggle="dropdown" href="#">Bonjour {{ app.user.username }}<b class="caret"></b></a>
+            				<ul class="dropdown-menu">
+              					<li><a href="#">Profil</a></li>
+              					<li class="divider"></li>
+              					<li><a href="{{ path('fos_user_security_logout') }}">Déconnexion</a></li>
+            				</ul>
+          				</li>
+    				{% else %}
+    					<li><a href="{{ path('fos_user_security_login') }}">Connexion</a></li>
+    				{% endif %}
+    			</ul>
+  			</div>
+		</div>
+
+    <div class="container">
+      <div class="row">
+        <nav class="col-md-2" id="navigation">
+          {% block menu_aux %}
+          {% endblock %}
+        </nav>
+        <div class-"col-md-10" id="main-content">
+	 	     {% block corps %}
+		      {% endblock %}
+        </div>
+      </div>
+    </div>
+
+		{% javascripts '../app/Resources/public/js/jquery-1.11.3.min.js' '../app/Resources/public/js/bootstrap.min.js' %}
+ 			<script type="text/javascript" src="{{ asset_url }}"></script>
+		{% endjavascripts %}
+	</body>
+</html>

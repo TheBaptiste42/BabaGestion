@@ -1,0 +1,53 @@
+{# src/BVDS/ComptaBundle/Ressources/views/Account/view.html.twig #}
+
+{% extends 'BVDSComptaBundle::layout.html.twig' %}
+
+{% block corps %}
+	<h3>{{ account.nom }}</h3>
+	<h6>Crée le {{ account.datecreation | date("d/m/Y") }} à {{ account.datecreation | date("H:m:s") }}</h6>
+	<p>Dernière modification le : {{ account.datelastmod | date("d/m/Y") }} à {{ account.datelastmod | date("H:m:s") }}</p>
+	<p>Deb_Proprio : {{ account.proprio }}</p>
+	<p>Montant total : {{ mtotal }} &euro;</p>
+
+	<table class="table table-striped table-responsive">
+		<thead>
+			<tr>
+				<th>Ptge</th>
+				<th>Libelle</th>
+				<th>Montant</th>
+				<th>Catégories</th>
+				<th>Date</th>
+				<th>Actions</th>
+			</tr>
+		</thead>
+		<tbody>
+			{% for transaction in transactions %}
+				{% if transaction.type == "ini" %}
+				<tr class="info">
+				{% elseif transaction.type == "aju" %}
+				<tr class="success">
+				{% else %}
+				<tr>
+				{% endif %}
+					<td></td>
+					<td>{{ transaction.libelle }}</td>
+					{% if transaction.type == "deb" %}
+					<td style="color:red; border: 1px solid red; border-radius: 111111111px;">
+					{% elseif transaction.type == "cre" %}
+					<td style="color:green;">
+					{% else %}
+					<td>
+					{% endif %}
+					{{ transaction.montant }} &euro;</td>
+					<td>
+						{% for cat in transaction.categories %}
+							{{ cat.libelle }}&nbsp;		
+						{% endfor %}
+					</td>
+					<td>{{ transaction.date | date("d/m/Y à H:m") }}</td>
+					<td><button class="btn btn-primary">M</button>&nbsp;<a href="" class="btn btn-danger">X</a></td>
+				</tr>
+			{% endfor %}
+		</tbody>
+	</table>
+{% endblock %}

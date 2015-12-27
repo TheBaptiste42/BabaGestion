@@ -1,0 +1,44 @@
+{# src/BVDS/ComptaBundle/Ressources/views/Account/list.html.twig #}
+
+{% extends 'BVDSComptaBundle::layout.html.twig' %}
+
+{% block navaux_compta_listecompte %}class="active"{% endblock %}
+
+{% block corps %}
+	<h3>Liste des comptes de {{ app.user }}</h3>
+
+	{% for message in app.session.flashbag.get('notice') %}
+		<div class="panel panel-success">
+			<div class="panel-heading">
+				<h3 class="panel-title">Message</h3>
+			</div>
+			<div class="panel-body">{{ message }}</div>
+		</div>    
+    {% endfor %}
+
+	<table class="table table-striped table-responsive">
+		<thead>
+			<tr>
+				<th>Nom du compte</th>
+				<th>Date de création</th>
+				<th>Date de dernière modification</th>
+				<th>Actions</th>
+			</tr>
+		</thead>
+		<tbody>
+			{% for account in listAccounts %}
+				<tr>
+					<td><a href="{{ path("bvds_compta_account_view", {'id': account.id }) }}">{{ account.nom }}</a></td>
+					<td>{{ account.datecreation | date("d/m/Y H:m:s") }}</td>
+					<td>{{ account.datelastmod | date("d/m/Y H:m:s") }}</td>
+					<td><button class="btn btn-primary">M</button>&nbsp;<a href="{{ path('bvds_compta_account_del', {'id': account.id}) }}" class="btn btn-danger">X</a></td>
+				</tr>
+    		{% endfor %}
+		</tbody>
+		<tfoot>
+			<tr>
+				<td colspan="4"><a class="btn btn-success" href="{{ path('bvds_compta_account_add') }}">Ajouter un compte</a></td>	
+			</tr>
+		</tfoot>
+	</table>
+{% endblock %}

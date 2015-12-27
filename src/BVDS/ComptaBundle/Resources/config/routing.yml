@@ -1,0 +1,27 @@
+bvds_compta_homepage:
+    path:     /
+    defaults: { _controller: BVDSComptaBundle:Default:index }
+
+bvds_compta_account_add:
+    path:     /account/add 
+    defaults: { _controller: BVDSComptaBundle:Account:add }
+
+bvds_compta_account_list:
+    path:     /account/list
+    defaults: { _controller: BVDSComptaBundle:Account:list }
+
+bvds_compta_account_view:
+    path:     /account/view/{id}
+    defaults: { _controller: BVDSComptaBundle:Account:view }
+
+bvds_compta_account_del:
+    path:     /account/del/{id}
+    defaults: { _controller: BVDSComptaBundle:Account:del }
+
+bvds_compta_transcategories_list:
+    path:     /tcat/list
+    defaults: { _controller: BVDSComptaBundle:TCategorie:list }
+
+bvds_compta_transcategories_add:
+    path:     /tcat/add
+    defaults: { _controller: BVDSComptaBundle:TCategorie:add }

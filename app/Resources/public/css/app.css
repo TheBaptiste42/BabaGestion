@@ -1,0 +1,38 @@
+html, body {
+  height: 100%;
+  /* The html and body elements cannot have any padding or margin. */
+}
+
+body {
+	padding-top: 60px;
+  padding-bottom: 60px;
+}
+
+.container {
+  display: table;
+  padding: 0px;
+}
+.row {
+  display: table-row;
+  height: 100%;
+}
+.col-md-1, .col-md-2, .col-md-3, .col-md-4, .col-md-5, .col-md-6, .col-md-9, .col-md-10, .col-md-11, .col-md-12 {
+  display: table-cell;
+  float: none;
+  padding: 5px;
+  margin: 10px;
+}
+.table td, th {
+   text-align: center;   
+}
+
+.caret-up {
+  width: 0; 
+  height: 0; 
+  border-left: 4px solid rgba(0, 0, 0, 0);
+  border-right: 4px solid rgba(0, 0, 0, 0);
+  border-bottom: 4px solid;
+  display: inline-block;
+  margin-left: 2px;
+  vertical-align: middle;
+}

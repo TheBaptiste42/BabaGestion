@@ -1,0 +1,4 @@
+services:
+#    bvds_compta.example:
+#        class: BVDS\ComptaBundle\Example
+#        arguments: [@service_id, "plain_value", %parameter%]
